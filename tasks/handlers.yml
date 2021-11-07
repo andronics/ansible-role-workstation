@@ -1,22 +1,15 @@
 ---
 
-- name: Restart pi-hole
+- name: Restart PVR
   community.docker.docker_compose:
-    project_src: "{{ config_dir }}/pi-hole/"
+    project_src: "{{ config_dir }}/docker-pvr/"
     build: false
     restarted: true
   become: false
 
-- name: Restart internet-monitoring
+- name: Restart VPN
   community.docker.docker_compose:
-    project_src: "{{ config_dir }}/internet-monitoring/"
-    build: false
-    restarted: true
-  become: false
-
-- name: Restart shelly-plug-prometheus
-  community.docker.docker_compose:
-    project_src: "{{ config_dir }}/shelly-plug-prometheus/"
+    project_src: "{{ config_dir }}/docker-vpn/"
     build: false
     restarted: true
   become: false
